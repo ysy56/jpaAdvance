@@ -8,14 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "food")
-public class Food { // 얘가 외래키의 주인!!!
+public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private double price;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }
