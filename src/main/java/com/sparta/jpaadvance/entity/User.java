@@ -17,6 +17,11 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Food> FoodList = new ArrayList<>();
+
+    public void addFoodList(Food food) {
+        this.FoodList.add(food);
+        food.setUser(this); // 외래 키 설정
+    }
 }
